@@ -100,7 +100,7 @@ var map = new mapboxgl.Map({
   container: 'map',
   style: 'mapbox://styles/bloofer/cmramwwhv000301qofo6mcbyp',
   center: [138.9903855584159, 36.714737362241294],
-  zoom: 11
+  zoom: 10
 });
 
 map.on('error', function (e) {
@@ -177,8 +177,13 @@ map.on('error', function (e) {
               map.getCanvas().style.cursor = '';
             });
 
-            var bbox = turf.bbox(data);
-            map.fitBounds(bbox, { padding: 50 });
+            if (data.features.length > 2) {
+              var bbox = turf.bbox(data);
+              map.fitBounds(bbox, {
+                padding: 50,
+                maxZoom: 11
+              });
+            }
 
           });
 
