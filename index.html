@@ -177,7 +177,7 @@ map.on('error', function (e) {
               map.getCanvas().style.cursor = '';
             });
 
-            if (data.features.length > 2) {
+            if (data.features.length > 3) {
               var bbox = turf.bbox(data);
               map.fitBounds(bbox, {
                 padding: 50,
