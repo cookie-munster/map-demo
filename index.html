@@ -26,6 +26,51 @@
       width: 100%;
     }
 
+    /* Map legend */
+    .map-legend {
+      position: absolute;
+      right: 16px;
+      bottom: 28px;
+      z-index: 1;
+      width: 190px;
+      padding: 12px 14px;
+      background: rgba(255, 255, 255, 0.94);
+      border-radius: 4px;
+      box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+      font: 13px/18px 'Source Sans Pro', 'Helvetica Neue', sans-serif;
+      color: #222;
+    }
+
+    .map-legend h2 {
+      margin: 0 0 7px;
+      font-size: 14px;
+      line-height: 18px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 5px;
+    }
+
+    .legend-symbol {
+      flex: 0 0 auto;
+      width: 14px;
+      height: 14px;
+      border: 1px solid rgba(0, 0, 0, 0.35);
+    }
+
+    .legend-point {
+      border-radius: 50%;
+      background: red;
+    }
+
+    /* biosphere basemap style colors */
+    .biosphere-light { background: #efedf5; }
+    .biosphere-medium { background: #bcbddc; }
+    .biosphere-dark { background: #756bb1; }
+
     /* Popup styling */
 
     .mapboxgl-popup {
@@ -81,6 +126,13 @@
 <body>
 
   <div id="map"></div>
+  <aside class="map-legend" aria-label="Map legend">
+    <h2>Minakami Biosphere</h2>
+    <div class="legend-item"><span class="legend-symbol legend-point"></span><span>Points of Interest</span></div>
+    <div class="legend-item"><span class="legend-symbol biosphere-light"></span><span>Buffer Zone</span></div>
+    <div class="legend-item"><span class="legend-symbol biosphere-medium"></span><span>Transition Zone</span></div>
+    <div class="legend-item"><span class="legend-symbol biosphere-dark"></span><span>Core Zone</span></div>
+  </aside>
   <script>
 
     var transformRequest = (url, resourceType) => {
